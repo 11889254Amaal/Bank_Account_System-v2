@@ -18,4 +18,9 @@ public interface AccountRepsitory extends CrudRepository<Account,Integer> {
 
     @Query(value = "Select id from Account Where account_number = :account_number", nativeQuery = true)
     Long findAccountNumberById(@Param("account_number") Long account_number);
+
+
+
+    @Query(value = "Select id from Account Where account_number = :accountNumber", nativeQuery = true)
+    Integer findByAccountNumber(@Param("accountNumber") Long accountNumber);
 }

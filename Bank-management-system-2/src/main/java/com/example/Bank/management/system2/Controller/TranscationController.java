@@ -1,6 +1,7 @@
 package com.example.Bank.management.system2.Controller;
 
 import com.example.Bank.management.system2.ObjectRequest.AddAccountForCustomer;
+import com.example.Bank.management.system2.ObjectRequest.AddLoanForCustomer;
 import com.example.Bank.management.system2.ObjectRequest.UpdateBlanceWhenCreateTranscation;
 import com.example.Bank.management.system2.Service.AccountServices;
 import com.example.Bank.management.system2.Service.TranscationServices;
@@ -25,6 +26,14 @@ public class TranscationController {
         return UpdateBalance;
 
     }
+    @RequestMapping(value = "CalculatInterst", method = RequestMethod.POST)
+    public String CalculatInterst(@RequestBody AddAccountForCustomer addAccountForCustomer) {
+        transcationServices.CalculateInterst(addAccountForCustomer);
+        String UpdateBalance = "Account Balance update  Successfully";
+        return UpdateBalance;
+
+    }
+
 
 
 }

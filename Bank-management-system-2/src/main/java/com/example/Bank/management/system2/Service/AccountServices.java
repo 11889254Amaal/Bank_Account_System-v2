@@ -40,4 +40,6 @@ public class AccountServices {
         List<Account> customers = accountRepsitory.getCustomerAccounById(AccountId);
         return  customers;
     }
+
+
 }

@@ -43,6 +43,10 @@ public class CustomerServices {
         List<Customer> customers = (List<Customer>) customerRepsitory.findAll();
         return  customers;
     }
-
+    public void deleteCustomer(Integer id) {
+        Customer customer = customerRepsitory.findById(id).get();
+        customer.setCustomer_address("Sumail");
+        customerRepsitory.save(customer);
+    }
 
 }

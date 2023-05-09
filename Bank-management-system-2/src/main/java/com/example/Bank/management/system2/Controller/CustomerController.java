@@ -44,7 +44,15 @@ public class CustomerController {
         return customer;
     }
 
-
+    @RequestMapping(value = "deleteCustomer", method = RequestMethod.POST)
+    public String deleteCustomer(@RequestParam Integer id) {
+        try {
+            customerService.deleteCustomer(id);
+            return "Customer Updated Successfully";
+        } catch (Exception e) {
+            return "Customer Updated Failed";
+        }
+    }
 
 
 }

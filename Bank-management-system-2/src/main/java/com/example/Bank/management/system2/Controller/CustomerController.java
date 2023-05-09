@@ -2,6 +2,7 @@ package com.example.Bank.management.system2.Controller;
 
 
 
+import com.example.Bank.management.system2.Model.Account;
 import com.example.Bank.management.system2.Model.Customer;
 import com.example.Bank.management.system2.ObjectRequest.UpdateCustomerInformationRequest;
 import com.example.Bank.management.system2.Service.CustomerServices;
@@ -36,6 +37,13 @@ public class CustomerController {
         return UpdateCustomerInfo;
 
     }
+
+    @RequestMapping(value = "getCustomerAccountInformation", method = RequestMethod.GET)
+    public List<Customer> getCustomerInformation() {
+        List<Customer> customer = customerService.getCustomerInfo();
+        return customer;
+    }
+
 
 
 

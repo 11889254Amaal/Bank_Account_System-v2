@@ -9,7 +9,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface AccountRepsitory extends CrudRepository<Account,Integer> {
+public interface
+AccountRepsitory extends CrudRepository<Account,Integer> {
     @Query(value = "Select s from Account s Where s.customer.id = :customerId")
     List<Account> getCustomerAccountInformationAndBalance(@Param("customerId") Integer customerId);
 
@@ -21,6 +22,8 @@ public interface AccountRepsitory extends CrudRepository<Account,Integer> {
 
 
 
-    @Query(value = "Select id from Account Where account_number = :accountNumber", nativeQuery = true)
-    Integer findByAccountNumber(@Param("accountNumber") Long accountNumber);
+    @Query(value = "Select s from Account s Where s.customer.id = :customerId")
+    List<Account> getStatment(@Param("customerId") Integer customerId);
+
+
 }

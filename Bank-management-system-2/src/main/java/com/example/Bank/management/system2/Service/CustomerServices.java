@@ -39,5 +39,10 @@ public class CustomerServices {
 
     }
 
+    public List<Customer> getCustomerInfo(){
+        List<Customer> customers = (List<Customer>) customerRepsitory.findAll();
+        return  customers;
+    }
+
 
 }

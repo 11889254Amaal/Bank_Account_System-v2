@@ -47,14 +47,14 @@ public class TranscationServices {
 
   public void CalculateInterst(AddAccountForCustomer addAccountForCustomerr){
       Integer CustomerId1=customerRepsitory.findById(addAccountForCustomerr.getCustomer_name());
-      Account account = accountRepsitory.findById(CustomerId1).get();
-      Double oldBalance = addAccountForCustomerr.getAccount_balance();
-      Integer CustomerId2=accountRepsitory.findByAccountNumber(addAccountForCustomerr.getAccount_number());
-      Loan loan = loanRepsitory.findById(CustomerId2).get();
+      Account account = accountRepsitory.findById(Math.toIntExact(CustomerId1)).get();
+      Double oldBalance = account.getAccount_balance();
+      Integer CustomerId2=customerRepsitory.findById(addAccountForCustomerr.getCustomer_name());
+      Loan loan = loanRepsitory.findById(Math.toIntExact(CustomerId2)).get();
       Integer amount=loan.getAmount();
       Double interst= loan.getInterest();
       Double calcalutInterstOfAccount=amount*(interst/100);
-      account.setAccount_balance(calcalutInterstOfAccount);
+      account.setAccount_balance(calcalutInterstOfAccount+oldBalance);
 
   }
 

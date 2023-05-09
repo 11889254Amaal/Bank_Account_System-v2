@@ -41,5 +41,10 @@ public class AccountServices {
         return  customers;
     }
 
+    public List<Account> getAccountStatment(Integer AccountId){
+        List<Account> customers = accountRepsitory.getCustomerAccounById(AccountId);
+        return  customers;
+    }
+
 
 }

@@ -10,6 +10,7 @@ import com.example.Bank.management.system2.Repsitory.CustomerRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -44,6 +45,23 @@ public class AccountServices {
     public List<Account> getAccountStatment(Integer AccountId){
         List<Account> customers = accountRepsitory.getCustomerAccounById(AccountId);
         return  customers;
+    }
+
+    public String makeMonthlyStatement(Integer accountId) {
+        Account account = accountRepsitory.findById(accountId).get();
+        Customer customer = account.getCustomer();
+        LocalDate localDate = LocalDate.now();
+        LocalDate statementDate = LocalDate.of(localDate.getYear(), localDate.getMonth(), 1);
+
+        String statementOfAccount = "Monthly Statement Of Account :" + account.getAccount_number() +
+                "\n Customer Name :" + customer.getCustomer_name() +
+                "\n Customer Email :" + customer.getCustomer_email() +
+                "\n Customer Phone :" + customer.getCustomer_phone_number() +
+                "\n Date" + "\t" + localDate.getYear() + "\t" + localDate.getMonth() + "\t" + localDate.getDayOfMonth() +
+                "\n Account Balance :" + account.getAccount_balance();
+
+
+        return statementOfAccount;
     }
 
 

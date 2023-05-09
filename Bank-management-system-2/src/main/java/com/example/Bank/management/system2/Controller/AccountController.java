@@ -6,6 +6,7 @@ import com.example.Bank.management.system2.ObjectRequest.AddAccountForCustomer;
 import com.example.Bank.management.system2.Service.AccountServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,6 +45,11 @@ public class AccountController {
         return account;
     }
 
+    @RequestMapping(value = "makeMonthlyStatement", method = RequestMethod.GET)
+    public ResponseEntity<String> makeMonthlyStatement(@RequestParam Integer accountId) {
+        String statement = accountServices.makeMonthlyStatement(accountId);
+        return ResponseEntity.ok(statement);
+    }
 
 
 }

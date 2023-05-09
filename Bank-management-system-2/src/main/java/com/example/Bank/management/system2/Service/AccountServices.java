@@ -4,9 +4,11 @@ package com.example.Bank.management.system2.Service;
 
 import com.example.Bank.management.system2.Model.Account;
 import com.example.Bank.management.system2.Model.Customer;
+import com.example.Bank.management.system2.Model.Transcation;
 import com.example.Bank.management.system2.ObjectRequest.AddAccountForCustomer;
 import com.example.Bank.management.system2.Repsitory.AccountRepsitory;
 import com.example.Bank.management.system2.Repsitory.CustomerRepsitory;
+import com.example.Bank.management.system2.Repsitory.TranscationRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,9 @@ public class AccountServices {
 
     @Autowired
     CustomerRepsitory customerRepsitory;
+
+    @Autowired
+    TranscationRepsitory transcationRepsitory;
     public void addAccount(AddAccountForCustomer customerAccountDetails){
         Account account=new Account();
         account.setAccount_number(customerAccountDetails.getAccount_number());
@@ -62,6 +67,11 @@ public class AccountServices {
 
 
         return statementOfAccount;
+    }
+    public List<Transcation> getAccountHistoryWithTransaction(Integer id) {
+        Account account = accountRepsitory.findById(id).get(); // get the account ID
+        List<Transcation> transactionList = transcationRepsitory.findByAccount(account); //get the Transaction ID from Account
+        return transactionList;
     }
 
 

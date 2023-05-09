@@ -2,6 +2,7 @@ package com.example.Bank.management.system2.Controller;
 
 
 import com.example.Bank.management.system2.Model.Account;
+import com.example.Bank.management.system2.Model.Transcation;
 import com.example.Bank.management.system2.ObjectRequest.AddAccountForCustomer;
 import com.example.Bank.management.system2.Service.AccountServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,9 @@ public class AccountController {
         return ResponseEntity.ok(statement);
     }
 
-
+    @RequestMapping(value = "getAccountHistoryWithTransaction", method = RequestMethod.GET)
+    public ResponseEntity<List<Transcation>> getAccountHistoryWithTransaction(@RequestParam Integer id) {
+        List<Transcation> transactionList = accountServices.getAccountHistoryWithTransaction(id);
+        return ResponseEntity.ok(transactionList);
+    }
 }

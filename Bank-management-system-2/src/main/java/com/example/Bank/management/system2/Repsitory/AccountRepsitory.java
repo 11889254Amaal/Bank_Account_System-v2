@@ -27,4 +27,7 @@ AccountRepsitory extends CrudRepository<Account,Integer> {
 
     @Query(value = "Select s from Account s Where s.customer.id = :customerId")
     List<Account> getStatment(@Param("customerId") Integer customerId);
+
+    @Query(value = "Select s from Account s")
+    List<Account> getAllAccount();
 }

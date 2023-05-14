@@ -6,14 +6,18 @@ import com.example.Bank.management.system2.Model.Account;
 import com.example.Bank.management.system2.Model.Customer;
 import com.example.Bank.management.system2.Model.Transcation;
 import com.example.Bank.management.system2.ObjectRequest.AddAccountForCustomer;
+import com.example.Bank.management.system2.ObjectRequest.UpdateAccountInformationRequest;
 import com.example.Bank.management.system2.Repsitory.AccountRepsitory;
 import com.example.Bank.management.system2.Repsitory.CustomerRepsitory;
 import com.example.Bank.management.system2.Repsitory.TranscationRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AccountServices {
@@ -35,6 +39,18 @@ public class AccountServices {
         account.setCustomer(customer);
         account.setState_of_Account(customerAccountDetails.getState_of_account());
         accountRepsitory.save(account);
+    }
+
+    public void updateAccountInfo(UpdateAccountInformationRequest accountUpdateInformationRequest){
+        Account account=new Account();
+        account.setId(accountUpdateInformationRequest.getId());
+        account.setState_of_Account(accountUpdateInformationRequest.getState_of_Account());
+        account.setAccount_balance(accountUpdateInformationRequest.getAccount_balance());
+        account.setAccount_number(accountUpdateInformationRequest.getAccount_number());
+        Integer customerId=customerRepsitory.findById(accountUpdateInformationRequest.getCustomerName());
+        Customer customer = customerRepsitory.findById(customerId).get();
+        accountRepsitory.save(account);
+
     }
 
     public List<Account> getCustomerAccountInformation(Integer customerId){

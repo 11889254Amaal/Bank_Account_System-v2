@@ -4,6 +4,8 @@ package com.example.Bank.management.system2.Controller;
 import com.example.Bank.management.system2.Model.Account;
 import com.example.Bank.management.system2.Model.Transcation;
 import com.example.Bank.management.system2.ObjectRequest.AddAccountForCustomer;
+import com.example.Bank.management.system2.ObjectRequest.UpdateAccountInformationRequest;
+import com.example.Bank.management.system2.ObjectRequest.UpdateCustomerInformationRequest;
 import com.example.Bank.management.system2.Service.AccountServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +27,14 @@ public class AccountController {
         accountServices.addAccount(accountDetails);
         String accountAdd = "Account Add Successfully";
         return accountAdd;
+
+    }
+
+    @RequestMapping(value = "updateAccountDetails", method = RequestMethod.POST)
+    public String updateAccountInfo(@RequestBody UpdateAccountInformationRequest updateAccountInformationRequest) {
+        accountServices.updateAccountInfo(updateAccountInformationRequest);
+        String UpdateAccountInfo = "Account Update Successfully";
+        return UpdateAccountInfo;
 
     }
 

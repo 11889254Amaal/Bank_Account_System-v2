@@ -1,15 +1,10 @@
 package com.example.Bank.management.system2.Controller;
 
-import com.example.Bank.management.system2.ObjectRequest.AddAccountForCustomer;
-import com.example.Bank.management.system2.ObjectRequest.AddLoanForCustomer;
-import com.example.Bank.management.system2.ObjectRequest.UpdateBlanceWhenCreateTranscation;
+import com.example.Bank.management.system2.ObjectRequest.*;
 import com.example.Bank.management.system2.Service.AccountServices;
 import com.example.Bank.management.system2.Service.TranscationServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "Transcation")
@@ -32,6 +27,24 @@ public class TranscationController {
         String UpdateBalance = "Account Balance update  Successfully";
         return UpdateBalance;
 
+    }
+
+    @RequestMapping(value = "updateTranscationDetails", method = RequestMethod.POST)
+    public String updateTranscationInfo(@RequestBody UpdateTranscationRequeast updateTranscationRequeast) {
+        transcationServices.updateTranscationInfo(updateTranscationRequeast);
+        String UpdateTranscationInfo = "Transcation Update Successfully";
+        return UpdateTranscationInfo;
+
+    }
+
+    @RequestMapping(value = "deleteLoan", method = RequestMethod.POST)
+    public String deleteTranscation(@RequestParam Integer id) {
+        try {
+            transcationServices.deleteTranscation(id);
+            return "Transcation delete Successfully";
+        } catch (Exception e) {
+            return "Transcation delete Failed";
+        }
     }
 
 

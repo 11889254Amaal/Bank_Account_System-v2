@@ -37,9 +37,9 @@ public class CreditCardController {
     public String deleteCreditCard(@RequestParam Integer id) {
         try {
             creditCardServices.deleteCreditCard(id);
-            return "CreditCard Updated Successfully";
+            return "CreditCard delete Successfully";
         } catch (Exception e) {
-            return "CreditCard Updated Failed";
+            return "CreditCard delete Failed";
         }
     }
 }

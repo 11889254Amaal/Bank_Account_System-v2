@@ -72,9 +72,9 @@ public class AccountController {
     public String deleteAccount(@RequestParam Integer id) {
         try {
             accountServices.deleteAccount(id);
-            return "Customer Updated Successfully";
+            return "Account delete Successfully";
         } catch (Exception e) {
-            return "Customer Updated Failed";
+            return "Account delete Failed";
         }
     }
 }

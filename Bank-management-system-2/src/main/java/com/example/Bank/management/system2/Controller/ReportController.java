@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileNotFoundException;
 @RestController
-@RequestMapping("path =Report")
+@RequestMapping(path ="Report")
 public class ReportController {
 
 

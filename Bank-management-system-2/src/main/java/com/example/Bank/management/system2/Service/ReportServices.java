@@ -33,9 +33,9 @@ public class ReportServices {
             account.getId();
             account.getAccount_number();
             account.getAccount_balance();
-            account.getCustomer().getId();
-            account.getState_of_Account();
-            AccountReport accountsReport = new AccountReport(account.getId(), account.getAccount_number(), account.getAccount_balance(), account.getState_of_Account(), account.getCustomer().getId());
+            account.getCustomer().getCustomer_name();
+            account.getAccount_balance();
+            AccountReport accountsReport = new AccountReport(account.getId(),account.getAccount_number(),account.getCustomer().getCustomer_name(),account.getAccount_balance());
             customerReports.add(accountsReport);
         }
         File file = new File("C:\\Users\\User010\\Downloads\\Bank management system(2)\\Bank-management-system-2\\src\\main\\resources\\AccountReport.jrxml");

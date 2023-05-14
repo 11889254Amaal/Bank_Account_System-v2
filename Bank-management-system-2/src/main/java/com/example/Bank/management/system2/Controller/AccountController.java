@@ -67,4 +67,14 @@ public class AccountController {
         List<Transcation> transactionList = accountServices.getAccountHistoryWithTransaction(id);
         return ResponseEntity.ok(transactionList);
     }
+
+    @RequestMapping(value = "deleteAccount", method = RequestMethod.POST)
+    public String deleteAccount(@RequestParam Integer id) {
+        try {
+            accountServices.deleteAccount(id);
+            return "Customer Updated Successfully";
+        } catch (Exception e) {
+            return "Customer Updated Failed";
+        }
+    }
 }

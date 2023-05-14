@@ -52,6 +52,11 @@ public class AccountServices {
         accountRepsitory.save(account);
 
     }
+    public void deleteAccount(Integer id) {
+        Account account = accountRepsitory.findById(id).get();
+        account.setState_of_Account("Active");
+        accountRepsitory.save(account);
+    }
 
     public List<Account> getCustomerAccountInformation(Integer customerId){
         List<Account> customers = accountRepsitory.getCustomerAccountInformationAndBalance(customerId);

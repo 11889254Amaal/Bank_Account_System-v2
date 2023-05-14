@@ -6,6 +6,7 @@ import com.example.Bank.management.system2.Model.Customer;
 import com.example.Bank.management.system2.ObjectRequest.AddAccountForCustomer;
 import com.example.Bank.management.system2.ObjectRequest.AddCreditCardForCustomer;
 import com.example.Bank.management.system2.ObjectRequest.UpdateAccountInformationRequest;
+import com.example.Bank.management.system2.ObjectRequest.UpdateCreditCardInformationRequest;
 import com.example.Bank.management.system2.Repsitory.AccountRepsitory;
 import com.example.Bank.management.system2.Repsitory.CreditCardRepsitory;
 import com.example.Bank.management.system2.Repsitory.CustomerRepsitory;
@@ -36,16 +37,21 @@ public class CreditCardServices {
         creditCardRepsitory.save(creditCard);
     }
 
-    public void updateAccountInfo(UpdateCreditCardInformationRequest updateCreditCardInformationRequest){
-        Account account=new Account();
-        account.setId(accountUpdateInformationRequest.getId());
-        account.setState_of_Account(accountUpdateInformationRequest.getState_of_Account());
-        account.setAccount_balance(accountUpdateInformationRequest.getAccount_balance());
-        account.setAccount_number(accountUpdateInformationRequest.getAccount_number());
-        Integer customerId=customerRepsitory.findById(accountUpdateInformationRequest.getCustomerName());
-        Customer customer = customerRepsitory.findById(customerId).get();
-        accountRepsitory.save(account);
-
+    public void updateCreditCardInfo(UpdateCreditCardInformationRequest updateCreditCardInformationRequest){
+        CreditCard creditCard=new CreditCard();
+        creditCard.setId(updateCreditCardInformationRequest.getId());
+        creditCard.setCardNumber(updateCreditCardInformationRequest.getCardNumber());
+        creditCard.setCreditCardBalance(updateCreditCardInformationRequest.getCreditCardBalance());
+        creditCard.setCreditCardState(updateCreditCardInformationRequest.getCreditCardState());
+        Integer CustomerId=customerRepsitory.findById(updateCreditCardInformationRequest.getCustomer_name());
+        Customer customer = customerRepsitory.findById(CustomerId).get();
+        creditCard.setCustomer(customer);
+        creditCardRepsitory.save(creditCard);
+    }
+    public void deleteCreditCard(Integer id) {
+        CreditCard creditCard = creditCardRepsitory.findById(id).get();
+        creditCard.setCardNumber(11122222);
+        creditCardRepsitory.save(creditCard);
     }
 
 

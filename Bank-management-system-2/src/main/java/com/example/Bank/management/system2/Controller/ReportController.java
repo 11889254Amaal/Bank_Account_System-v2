@@ -26,5 +26,11 @@ public class ReportController {
         }
 
 
+        @RequestMapping(value = "TranscationAccountReport", method = RequestMethod.GET)
+        public String generateTranscationAccountReport() throws FileNotFoundException, JRException {
+
+                return reportService.generateReportForTransactions();
+        }
+
 
 }

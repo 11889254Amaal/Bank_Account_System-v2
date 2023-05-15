@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LoanReport" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ed267ecd-d37f-40e8-b912-99de07f0a271">
 
-    <field name=" id" class="java.lang.Integer">
+    <field name="id" class="java.lang.Integer">
 
     </field>
     <field name="amount" class="java.lang.Integer">
@@ -71,7 +71,7 @@
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[state of loan]]></text>
+                <text><![CDATA[amount]]></text>
             </staticText>
             <staticText>
                 <reportElement mode="Opaque" x="158" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ddab32f1-d421-437f-a9d8-5f26aa2c3508">
@@ -80,7 +80,7 @@
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[amount]]></text>
+                <text><![CDATA[interest]]></text>
             </staticText>
             <staticText>
                 <reportElement mode="Opaque" x="237" y="0" width="73" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="013212e9-d78d-4894-b4bf-154318870409">
@@ -89,7 +89,7 @@
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[comments_for_stat_of_loan]]></text>
+                <text><![CDATA[statOfLoan]]></text>
             </staticText>
             <staticText>
                 <reportElement mode="Opaque" x="316" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e4cfe5cf-61a7-45f1-89d8-3608ed667024">
@@ -98,7 +98,7 @@
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[interest]]></text>
+                <text><![CDATA[commentsForStatOfLoan]]></text>
             </staticText>
             <staticText>
                 <reportElement mode="Opaque" x="395" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="bb373141-3e42-412a-b956-16729ee5670a">
@@ -116,7 +116,7 @@
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[customer_id]]></text>
+                <text><![CDATA[customerid]]></text>
             </staticText>
         </band>
     </columnHeader>

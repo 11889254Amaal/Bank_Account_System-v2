@@ -10,6 +10,9 @@ import com.example.Bank.management.system2.Repsitory.CustomerRepsitory;
 import com.example.Bank.management.system2.Repsitory.LoanRepsitory;
 import com.example.Bank.management.system2.Repsitory.TranscationRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -29,8 +32,22 @@ public class TranscationServices {
 
     @Autowired
     LoanRepsitory loanRepsitory;
+
+    @Autowired
+    UpdateTranscationRequeast updateTranscationRequeast;
+
+    @Autowired
+    private JavaMailSender mailSender;
+    @Value("${spring.mail.username}")
+    private String sender;
     public void addTranscation(UpdateBlanceWhenCreateTranscation updateBlanceWhenCreateTranscation){
+
+        //calaculate fees
         Transcation transcation=new Transcation();
+        double bondray=0.500;
+        int AccountBallanceBeforFalls=transcation.getAmount();
+        double AccountBallanceAfterFalls=AccountBallanceBeforFalls*bondray;
+
         transcation.setAmount(updateBlanceWhenCreateTranscation.getAmount());
         Long accountId=accountRepsitory.findAccountNumberById(updateBlanceWhenCreateTranscation.getAccount_number());
         Account account = accountRepsitory.findById(Math.toIntExact(accountId)).get();
@@ -40,6 +57,25 @@ public class TranscationServices {
          accountRepsitory.save(account);
          transcation.setAccount(account);
          transcationRepsitory.save(transcation);
+
+         double accountBalance=account.getAccount_balance();
+         if (accountBalance<AccountBallanceAfterFalls)
+         {
+             SimpleMailMessage mailMessage = new SimpleMailMessage();
+             mailMessage.setFrom(sender);
+             Integer customerId = accountRepsitory.getAccountById(updateTranscationRequeast.getId());
+             String customerMAil = customerRepsitory.getMailById(customerId);
+             mailMessage.setTo(customerMAil);
+             mailMessage.setText("****you are inform you that transcation filed because your Account balance lass than Bondray.\n\n" +
+                     "Your account balance is: " + accountBalance + "\n" +
+                     "You tried to send: " + transcation.getAmount() + "\n\n" +
+                     "Please deposit more funds into your account and try again.\n\n" +
+                     "Bank Muscat");
+             mailMessage.setSubject("Bank ABC Notification: Transaction Failed");
+             mailSender.send(mailMessage);
+
+             return;
+         }
     }
 
 

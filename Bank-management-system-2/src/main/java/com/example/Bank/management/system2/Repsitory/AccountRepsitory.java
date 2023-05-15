@@ -30,4 +30,9 @@ AccountRepsitory extends CrudRepository<Account,Integer> {
 
     @Query(value = "Select s from Account s")
     List<Account> getAllAccount();
+
+    @Query(value = "select customer_id from account where id= :accountId",nativeQuery = true)
+    Integer getAccountById(@Param("accountId") Integer id);
+
+
 }

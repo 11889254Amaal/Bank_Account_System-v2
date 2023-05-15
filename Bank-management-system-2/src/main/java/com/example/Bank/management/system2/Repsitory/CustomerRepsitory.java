@@ -19,6 +19,10 @@ public interface CustomerRepsitory extends CrudRepository<Customer,Integer> {
     Integer findById(@Param("customerName") String customerName);
 
 
+    @Query(value = "select customer_email from customer Where id=:customerId",nativeQuery = true)
+    String getMailById(@Param("customerId") Integer id);
+
+
 
 
 

@@ -32,5 +32,15 @@ public class ReportController {
                 return reportService.generateReportForTransactions();
         }
 
+        @RequestMapping(value = "CreditCardReport", method = RequestMethod.GET)
+        public String generateCreditCardReport() throws FileNotFoundException, JRException {
 
+                return reportService.generateReportForCreditCards();
+        }
+
+        @RequestMapping(value = "loanReport", method = RequestMethod.GET)
+        public String generateLoanReport() throws FileNotFoundException, JRException {
+
+                return reportService.generateReportForLoan();
+        }
 }

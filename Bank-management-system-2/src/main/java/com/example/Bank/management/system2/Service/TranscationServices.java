@@ -33,8 +33,7 @@ public class TranscationServices {
     @Autowired
     LoanRepsitory loanRepsitory;
 
-    @Autowired
-    UpdateTranscationRequeast updateTranscationRequeast;
+
 
     @Autowired
     private JavaMailSender mailSender;
@@ -45,7 +44,7 @@ public class TranscationServices {
         //calaculate fees
         Transcation transcation=new Transcation();
         double bondray=0.500;
-        int AccountBallanceBeforFalls=transcation.getAmount();
+        int AccountBallanceBeforFalls=updateBlanceWhenCreateTranscation.getAmount();
         double AccountBallanceAfterFalls=AccountBallanceBeforFalls*bondray;
 
         transcation.setAmount(updateBlanceWhenCreateTranscation.getAmount());
@@ -63,7 +62,7 @@ public class TranscationServices {
          {
              SimpleMailMessage mailMessage = new SimpleMailMessage();
              mailMessage.setFrom(sender);
-             Integer customerId = accountRepsitory.getAccountById(updateTranscationRequeast.getId());
+             Integer customerId = accountRepsitory.getAccountById(updateBlanceWhenCreateTranscation.getId());
              String customerMAil = customerRepsitory.getMailById(customerId);
              mailMessage.setTo(customerMAil);
              mailMessage.setText("****you are inform you that transcation filed because your Account balance lass than Bondray.\n\n" +
@@ -76,6 +75,7 @@ public class TranscationServices {
 
              return;
          }
+
     }
 
 

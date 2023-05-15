@@ -17,7 +17,7 @@ public class TranscationController {
     @RequestMapping(value = "addTranscation", method = RequestMethod.POST)
     public String addTranscation(@RequestBody UpdateBlanceWhenCreateTranscation updateBlanceWhenCreateTranscation) {
         transcationServices.addTranscation(updateBlanceWhenCreateTranscation);
-        String UpdateBalance = "Balance update  Successfully";
+        String UpdateBalance = "Balance add  Successfully";
         return UpdateBalance;
 
     }
